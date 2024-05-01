@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  api-student-22:
+    build: .
+    ports:
+      - "3022:3000"
+    environment:
+      DB_URL: mongodb://mongo-student-32:27017/CRMdb-student-22
+      PORT: 3000
+    depends_on:
+      - mongo-student-22
+  mongo-student-22:
+    image: mongo:latest
+    ports:
+      - "27049:27017"
+    volumes:
+      - db-data-student-22:/data/db
+volumes:
+  db-data-student-22:
